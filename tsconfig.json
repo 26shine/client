@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["./use-sound.d.ts"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
