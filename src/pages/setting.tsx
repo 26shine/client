@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./setting.module.css";
+import styles from "./app.module.scss";
 
 const Setting = () => {
   const [onCallDate, setOnCallDate] = useState("");
