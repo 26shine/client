@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import styles from './app.module.scss';
+import React, { useState, useEffect } from "react";
+import styles from "./setting.module.css";
 
-const setting = () => {
-  const [onCallDate, setOnCallDate] = useState<string | undefined>();
-  const [saved, setSaved] = useState<boolean>(false);
-
-  const handleSaveSetting = () => {
-    if (onCallDate) {
-      localStorage.setItem('onCallDate', onCallDate);
-    }
-  };
+const Setting = () => {
+  const [onCallDate, setOnCallDate] = useState("");
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    const savedOnCallDate = localStorage.getItem('onCallDate');
+    const savedOnCallDate = localStorage.getItem("onCallDate");
     if (savedOnCallDate) {
       setOnCallDate(savedOnCallDate);
     }
   }, []);
 
   useEffect(() => {
-    const savedOnCallDate = localStorage.getItem('onCallDate');
+    const savedOnCallDate = localStorage.getItem("onCallDate");
     console.log(onCallDate, savedOnCallDate);
     setSaved(onCallDate === savedOnCallDate);
   }, [onCallDate]);
+
+  const handleSaveSetting = () => {
+    localStorage.setItem("onCallDate", onCallDate);
+    setSaved(true);
+  };
 
   return (
     <div className={styles.setting_wrapper}>
@@ -31,8 +30,8 @@ const setting = () => {
         <span>Ngày điểm danh:</span>
         <div className={styles.input_container}>
           <input
-            type="text"
-            placeholder="Nhập ngày điểm danh"
+            type='text'
+            placeholder='Nhập ngày điểm danh'
             value={onCallDate}
             onChange={(e) => setOnCallDate(e.target.value)}
           />
@@ -45,4 +44,4 @@ const setting = () => {
   );
 };
 
-export default setting;
+export default Setting;
